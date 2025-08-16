@@ -86,9 +86,9 @@ function ExpensesFlatList() {
 			const filteredExpenses = allExpense.filter(
 				expense => expense.cost_center === profile!.cost_center
 			);
-			return [...new Set(filteredExpenses)];
+			return Array.from(new Set(filteredExpenses));
 		}
-		return [...new Set(allExpense)];
+		return Array.from(new Set(allExpense));
 	}, [allExpense]);
 
 	return (

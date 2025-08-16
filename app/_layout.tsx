@@ -81,13 +81,13 @@ function ThemedApp() {
 
 	return (
 		<PaperProvider theme={theme}>
-			<SnackBarProvider>
-				<QueryClientProvider client={queryClient}>
+			<QueryClientProvider client={queryClient}>
+				<SnackBarProvider>
 					<SessionProvider>
 						<RootLayoutNav />
 					</SessionProvider>
-				</QueryClientProvider>
-			</SnackBarProvider>
+				</SnackBarProvider>
+			</QueryClientProvider>
 		</PaperProvider>
 	);
 }

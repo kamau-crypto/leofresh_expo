@@ -10,9 +10,6 @@ export default function ProtectedLayout() {
 	const { top } = useSafeAreaInsets();
 	const store_key = SecureStore.getItem("auth_token");
 
-	console.log("User is", user);
-	console.log("Session is", store_key);
-
 	if (!user || !store_key) {
 		return <Redirect href={"/login"} />;
 	}

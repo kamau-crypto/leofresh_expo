@@ -4,7 +4,6 @@ import { appColors } from "@/constants";
 import { Tanks } from "@/screens/home";
 import { useProfileStore } from "@/store/profile";
 
-import { useSession } from "@/components";
 import { ShopDetails } from "@/screens/home/Shop";
 import { StockLevels } from "@/screens/home/StockLevels";
 import { useUserStore } from "@/store/user";
@@ -15,7 +14,6 @@ export default function HomeScreen() {
 	const top = useHeaderHeight();
 	const { profile } = useProfileStore();
 	const { user } = useUserStore();
-	const { session } = useSession();
 
 	const router = useRouter();
 

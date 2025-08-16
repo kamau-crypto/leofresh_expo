@@ -32,7 +32,7 @@ export const useProfileStore = create<ProfileStore>()(
 		}),
 		{
 			name: "profile",
-			storage: createJSONStorage(() => secureStorage),
+			storage: createJSONStorage(() => secureStorage), // Use Secure storage to store tokens but for complex stores, use React Native Async Storage.
 		}
 	)
 );

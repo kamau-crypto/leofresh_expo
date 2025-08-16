@@ -36,7 +36,7 @@ export function ExpensesForm() {
 
 	const { allAccounts, allExpenseAccnts } = useMemo(() => {
 		let allAccounts: JournalAccounts[] = [];
-		if (profile && expenses.length > 1)
+		if (profile && expenses && expenses.length > 1)
 			allAccounts = [
 				{
 					account: profile!.bank_account!,
@@ -54,7 +54,7 @@ export function ExpensesForm() {
 				},
 			];
 
-		const allExpenseAccnts = expenses.map(e => ({
+		const allExpenseAccnts = expenses!.map(e => ({
 			label: e.name,
 			value: e.name,
 		}));
