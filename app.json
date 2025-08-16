@@ -90,7 +90,8 @@
 			"expo-web-browser"
 		],
 		"experiments": {
-			"typedRoutes": true
+			"typedRoutes": true,
+			"treeShaking": true
 		},
 		"extra": {
 			"EXPO_ROUTER_APP_ROOT": "./app",

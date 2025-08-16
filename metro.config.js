@@ -3,15 +3,16 @@ const { getDefaultConfig } = require("expo/metro-config");
 /** @type {import('expo/metro-config').MetroConfig} */
 const config = getDefaultConfig(__dirname);
 
-// Enable tree shaking optimizations
+// Enhanced transformer configuration
 config.transformer = {
   ...config.transformer,
   minifierPath: require.resolve("metro-minify-esbuild"),
   minifierConfig: {
+    ...config.transformer.minifierConfig,
     // Enable dead code elimination
     dead_code: true,
     // Remove unused imports
-    drop_console: true, // Set to true in production to remove console.logs
+    drop_console: process.env.NODE_ENV === 'production', // Set to true in production to remove console.logs
     // Enable function inlining
     inline: 3,
     // Remove unused variables
@@ -38,8 +39,6 @@ config.transformer = {
     cascade: true,
     // Enable side effect optimization
     side_effects: true,
-    // Enable pure function calls optimization
-    pure_funcs: [],
     // Enable pure getters optimization
     pure_getters: true,
     // Enable unsafe optimizations (be careful with this)
@@ -63,11 +62,12 @@ config.transformer = {
   getTransformOptions: async () => ({
     transform: {
       experimentalImportSupport: true,
+      inlineRequires: true, // Enable inline requires optimization
     },
   }),
 };
 
-// Configure resolver for better tree shaking
+// Enhanced resolver configuration
 config.resolver = {
   ...config.resolver,
   // Enable symlinks resolution
@@ -76,11 +76,16 @@ config.resolver = {
   resolverMainFields: ["react-native", "browser", "main"],
   // Enable platform-specific extensions
   platforms: ["ios", "android", "native", "web"],
+  // Add cache configuration
+  useWatchman: true,
+  // Add specific extensions to resolve
+  sourceExts: ["js", "jsx", "ts", "tsx", "json"],
+  // Add asset extensions
+  assetExts: ["png", "jpg", "jpeg", "gif", "webp", "mp4"],
 };
 
-// Production-specific optimizations
+// Production optimizations
 if (process.env.NODE_ENV === "production") {
-  // Enable more aggressive minification in production
   config.transformer.minifierConfig = {
     ...config.transformer.minifierConfig,
     drop_console: true, // Remove console.logs in production
@@ -90,8 +95,21 @@ if (process.env.NODE_ENV === "production") {
       "console.info",
       "console.debug",
       "console.warn",
+      "console.error",
     ],
+    mangle: {
+      toplevel: true, // More aggressive name mangling
+      keep_classnames: false,
+      keep_fnames: false,
+    },
   };
+  
+  // Enable caching in production
+  config.cacheStores = [
+    {
+      type: "file",
+    },
+  ];
 }
 
 module.exports = config;
