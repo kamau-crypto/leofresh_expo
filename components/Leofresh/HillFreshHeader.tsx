@@ -18,7 +18,7 @@ export function HillFreshHeader() {
 		<View style={styles.header}>
 			<Image
 				style={styles.logo}
-				source={require("@/assets/hillfresh/logo.png")}
+				source={require("@/assets/leofresh/logo.png")}
 			/>
 			<View style={styles.cartUser}>
 				{user && user.type !== "Agent" ? (
@@ -34,7 +34,7 @@ export function HillFreshHeader() {
 						asChild>
 						<Image
 							style={styles.userIcon}
-							source={require("@/assets/hillfresh/shop-attendant.png")}
+							source={require("@/assets/leofresh/shop-attendant.png")}
 						/>
 					</Link>
 				</TouchableOpacity>

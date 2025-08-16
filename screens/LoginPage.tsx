@@ -64,7 +64,7 @@ export function LoginPage() {
 			}}>
 			<Image
 				style={styles.image}
-				source={require("@/assets/hillfresh/logo.png")}
+				source={require("@/assets/leofresh/logo.png")}
 			/>
 			<Badge
 				style={{ padding: 2 }}
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
 		margin: "auto",
 		height: Platform.OS === "web" ? 300 : 150,
 		width: Platform.OS === "web" ? "70%" : "100%",
-		objectFit: "cover",
+		objectFit: "contain",
 	},
 	input: {
 		borderRadius: 10,

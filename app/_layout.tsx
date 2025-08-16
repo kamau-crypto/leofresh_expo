@@ -34,11 +34,6 @@ export default function RootLayout() {
 		SpaceMono: require("../assets/fonts/Quicksand.ttf"),
 	});
 
-	// const baseFont = {
-	// 	fontFamily: "SpaceMono",
-	// 	fontWeight: "700",
-	// } as const;
-
 	// translations for react native paper date picker
 	registerTranslation("en", {
 		save: "Save",
@@ -116,7 +111,7 @@ function RootLayoutNav() {
 				),
 			}}>
 			<Stack.Screen
-				name='(tabs)'
+				name='(protected)'
 				options={{ headerShown: true, fullScreenGestureShadowEnabled: true }}
 			/>
 			<Stack.Screen
@@ -134,26 +129,14 @@ function RootLayoutNav() {
 				}}
 			/>
 			<Stack.Screen
-				name='login-via-code'
+				name='change-password'
 				options={{
 					headerShown: false,
 					fullScreenGestureShadowEnabled: true,
 				}}
 			/>
 			<Stack.Screen
-				name='add-sales'
-				options={{ headerShown: true, fullScreenGestureShadowEnabled: true }}
-			/>
-			<Stack.Screen
-				name='agent'
-				options={{ headerShown: true, fullScreenGestureShadowEnabled: true }}
-			/>
-			<Stack.Screen
-				name='add-purchase'
-				options={{ headerShown: true, fullScreenGestureShadowEnabled: true }}
-			/>
-			<Stack.Screen
-				name='settings'
+				name='login-via-code'
 				options={{
 					headerShown: false,
 					fullScreenGestureShadowEnabled: true,

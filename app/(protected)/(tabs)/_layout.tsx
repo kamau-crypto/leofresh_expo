@@ -1,5 +1,5 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import { Link, Redirect, Tabs } from "expo-router";
+import { Link, Tabs } from "expo-router";
 import React from "react";
 import { Platform, Pressable } from "react-native";
 
@@ -11,8 +11,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function TabLayout() {
 	const clientValue = useClientOnlyValue(false, true);
-
-	const { isLoading, session } = useSession();
+	const { isLoading } = useSession();
 	const { theme } = useHillFreshTheme();
 	if (isLoading) {
 		return (
@@ -24,9 +23,6 @@ export default function TabLayout() {
 		);
 	}
 
-	if (!session) {
-		return <Redirect href={"/login"} />;
-	}
 	return (
 		<SafeAreaView
 			style={{ flex: 1 }}

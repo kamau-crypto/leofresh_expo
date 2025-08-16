@@ -3,7 +3,7 @@
 		"name": "Leofresh",
 		"description": "LeoFresh Limited Mobile app",
 		"slug": "leofresh",
-		"version": "2.0.6",
+		"version": "0.0.1",
 		"orientation": "portrait",
 		"icon": "./assets/images/icon.png",
 		"jsEngine": "hermes",
