@@ -1,9 +1,9 @@
 import { HillFreshMenuOptions, useHillFreshTheme } from "@/components";
 import { NotFound } from "@/components/illustrations";
 import { appColors, ResultInvoice } from "@/constants";
+import { SalesInvoice } from "@/services";
 import { useProfileStore } from "@/store/profile";
 import { useResultStore } from "@/store/result";
-import { SalesInvoice } from "@/use-cases";
 import { useFocusEffect, useRouter } from "expo-router";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {

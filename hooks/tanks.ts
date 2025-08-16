@@ -1,3 +1,4 @@
+import { Tanks } from "@/services/tank";
 import { useProfileStore } from "@/store/profile";
 import {
 	useCustomerTankDetailsStore,
@@ -5,7 +6,6 @@ import {
 	useCustomerTankStore,
 } from "@/store/tank";
 import { useUserStore } from "@/store/user";
-import { Tanks } from "@/use-cases/tank";
 import { useCallback, useEffect, useState } from "react";
 //
 //Get the tank associated with a customer

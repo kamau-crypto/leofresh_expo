@@ -1,10 +1,10 @@
 import { HillFreshFieldForm, HillFreshPickerFormField } from "@/components";
 import { CreateTankReading, TankStockTaking } from "@/constants";
+import { Tanks } from "@/services/tank";
 import {
 	useCustomerTankDetailsStore,
 	useCustomerTankStore,
 } from "@/store/tank";
-import { Tanks } from "@/use-cases/tank";
 import { hideKeyboard } from "@/utils/keyboard";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";
@@ -23,24 +23,22 @@ import { CurrentTime } from "./CurrentTime";
 
 const water_tanks_schema: ZodType<CreateTankReading> = z.object({
 	tank: z.string({
-		required_error: "A tank name is required",
-		description: "The tank you are adding water readings against",
+		error: "A tank name is required",
 	}),
 	reading_type: z.string({
-		required_error: "The type of Reading you want to declare",
-		description: "The tanks water reading reading type",
+		error: "The type of Reading you want to declare",
 	}),
 	number_of_tanks: z.number(),
 	height: z.coerce
-		.number({ required_error: "The tank water reading height in mm's" })
+		.number({ error: "The tank water reading height in mm's" })
 		.min(0),
 	meter_reading: z.coerce.number({
-		required_error: "The tank's water meter reading",
+		error: "The tank's water meter reading",
 	}),
 	opening_tank_reading: z.coerce.number({
-		required_error: "Opening tank readings are needed",
+		error: "Opening tank readings are needed",
 	}),
-	volume: z.number({ required_error: "volume is required" }),
+	volume: z.number({ error: "volume is required" }),
 });
 
 export function Tank() {

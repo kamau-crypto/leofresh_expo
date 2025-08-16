@@ -1,6 +1,6 @@
 import { CreatedSalesInvoice, SalesInvoiceItem } from "@/constants";
 import { CustomChip } from "@/screens/internalOrder/list/Chip";
-import { SalesInvoice } from "@/use-cases";
+import { SalesInvoice } from "@/services";
 import { formatToLocalCurrency } from "@/utils/format";
 import { format } from "date-fns";
 import React, { useEffect, useState } from "react";

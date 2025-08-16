@@ -1,7 +1,7 @@
+import { Meter } from "@/services/meter";
 import { useMeterReadingStore } from "@/store/meter";
 import { useProfileStore } from "@/store/profile";
 import { useCustomerTankStore } from "@/store/tank";
-import { Meter } from "@/use-cases/meter";
 import { useCallback, useEffect, useState } from "react";
 
 export function useRetrieveMeterReadings() {

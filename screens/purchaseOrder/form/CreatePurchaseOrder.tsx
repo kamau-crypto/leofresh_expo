@@ -4,10 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useNamingSeries } from "@/hooks/naming_series";
 import { useGetSuppliers } from "@/hooks/supplier";
+import { PurchaseOrder } from "@/services";
 import { usePurchaseCartStore } from "@/store/cart";
 import { useProductsToPurchaseStore } from "@/store/products";
 import { useProfileStore } from "@/store/profile";
-import { PurchaseOrder } from "@/use-cases";
 import { appConfig } from "@/utils/config";
 import { formatToLocalCurrency } from "@/utils/format";
 import { addDays, format, subDays } from "date-fns";

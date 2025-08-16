@@ -12,4 +12,5 @@ export interface UserDetails {
 	type: string;
 	autosubmit: boolean;
 	roles: ReadUserRoles[];
+	is_authenticated: boolean;
 }

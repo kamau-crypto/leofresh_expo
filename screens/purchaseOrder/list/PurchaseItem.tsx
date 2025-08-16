@@ -1,6 +1,6 @@
 import { HillFreshMenuOptions, useHillFreshTheme } from "@/components";
 import { appColors } from "@/constants";
-import { MaterialRequest, PurchaseOrder } from "@/use-cases";
+import { MaterialRequest, PurchaseOrder } from "@/services";
 import { formatToLocalCurrency } from "@/utils/format";
 import { format } from "date-fns";
 import { useCallback, useState } from "react";

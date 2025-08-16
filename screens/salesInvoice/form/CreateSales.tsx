@@ -11,14 +11,14 @@ import {
 	Weather,
 } from "@/constants";
 import { useNamingSeries } from "@/hooks/naming_series";
+import { SalesInvoice } from "@/services";
+import { Banking } from "@/services/banking";
+import { Meter } from "@/services/meter";
 import { useMeterReadingStore } from "@/store/meter";
 import { useProductsToSellStore } from "@/store/products";
 import { useProfileStore } from "@/store/profile";
 import { useCustomerTankStore } from "@/store/tank";
 import { useUserStore } from "@/store/user";
-import { SalesInvoice } from "@/use-cases";
-import { Banking } from "@/use-cases/banking";
-import { Meter } from "@/use-cases/meter";
 import { appConfig } from "@/utils/config";
 import { formatToLocalCurrency } from "@/utils/format";
 import { zodResolver } from "@hookform/resolvers/zod";

@@ -5,8 +5,8 @@ import {
 	MaterialRequestItem,
 } from "@/constants";
 import { useNamingSeries } from "@/hooks/naming_series";
+import { MaterialRequest } from "@/services/material.request";
 import { useMaterialReqCartStore } from "@/store/cart";
-import { MaterialRequest } from "@/use-cases/material.request";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "expo-router";
 import React, { useMemo, useState } from "react";

@@ -1,6 +1,6 @@
 import { HillFreshPrimaryChip } from "@/components";
 import { GetPurchaseOrder } from "@/constants";
-import { PurchaseOrder } from "@/use-cases";
+import { PurchaseOrder } from "@/services";
 import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, ScrollView, View } from "react-native";

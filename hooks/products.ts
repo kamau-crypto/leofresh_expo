@@ -1,9 +1,9 @@
 import { ItemGroup, SalesItems } from "@/constants";
+import { ItemPrice } from "@/services/item.price";
 import {
 	useProductsToPurchaseStore,
 	useProductsToSellStore,
 } from "@/store/products";
-import { ItemPrice } from "@/use-cases/item.price";
 import { useCallback, useEffect, useState } from "react";
 // export function
 export function useGetSalesProducts() {

@@ -1,7 +1,7 @@
 import { ReadExpenseAccounts } from "@/constants";
+import { Expense } from "@/services/expense";
 import { useProfileStore } from "@/store/profile";
 import { useResultStore } from "@/store/result";
-import { Expense } from "@/use-cases/expense";
 import { useCallback, useEffect, useState } from "react";
 
 export function useRetrieveExpenseAccounts() {

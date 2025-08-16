@@ -1,7 +1,7 @@
 import { MenuItemProps, useSnackbar } from "@/components";
 import { GetPurchaseOrder, PurchaseOrderStatusEnum } from "@/constants";
+import { PurchaseOrder } from "@/services";
 import { useReceptionStore } from "@/store/receptionstore";
-import { PurchaseOrder } from "@/use-cases";
 import { useRouter } from "expo-router";
 import { useMemo } from "react";
 import { PurchaseOrderWithOrigin } from "./guard";

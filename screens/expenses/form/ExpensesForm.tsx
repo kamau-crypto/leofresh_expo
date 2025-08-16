@@ -6,8 +6,8 @@ import {
 import { appColors, commonStyles, JournalAccounts } from "@/constants";
 import { useRetrieveExpenseAccounts } from "@/hooks/expense";
 import { useNamingSeries } from "@/hooks/naming_series";
+import { JournalEntry } from "@/services";
 import { useProfileStore } from "@/store/profile";
-import { JournalEntry } from "@/use-cases";
 import { hideKeyboard } from "@/utils/keyboard";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
@@ -127,7 +127,7 @@ export function ExpensesForm() {
 		if (createdExp.name) {
 			show({ message: "Sucessfully added the expense" });
 			reset();
-			router.replace("/(tabs)/expenses");
+			router.replace("/(protected)/(tabs)/expenses");
 			setIsLoading(false);
 		} else {
 			show({

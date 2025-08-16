@@ -9,10 +9,10 @@ import {
 	GetPurchaseOrder,
 } from "@/constants";
 import { useGetSuppliers } from "@/hooks/supplier";
+import { PurchaseInvoice } from "@/services/purchase.invoice";
+import { PurchaseReceipt } from "@/services/purchase.receipt";
 import { useProfileStore } from "@/store/profile";
 import { useReceptionStore } from "@/store/receptionstore";
-import { PurchaseInvoice } from "@/use-cases/purchase.invoice";
-import { PurchaseReceipt } from "@/use-cases/purchase.receipt";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { addDays, format } from "date-fns";
 import { useRouter } from "expo-router";
@@ -24,7 +24,11 @@ import { DatePickerInput } from "react-native-paper-dates";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { CreatePurchaseInvoice, createPurchaseInvoiceSchema } from "../schema";
 
-export function PurchaseOrderReceptionItems({ items }: { items: GetPurchaseOrder }) {
+export function PurchaseOrderReceptionItems({
+	items,
+}: {
+	items: GetPurchaseOrder;
+}) {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [purchaseInvoice, setPurchaseInvoice] =
 		useState<GetPurchaseOrder>(items);

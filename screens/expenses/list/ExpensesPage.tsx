@@ -1,9 +1,9 @@
 import { useHillFreshTheme, useSession } from "@/components";
 import { NotFound } from "@/components/illustrations";
 import { appColors, RetrievedJournalEntryData } from "@/constants";
+import { Expense } from "@/services/expense";
 import { useProfileStore } from "@/store/profile";
 import { useResultStore } from "@/store/result";
-import { Expense } from "@/use-cases/expense";
 import { formatToLocalCurrency } from "@/utils/format";
 import { useFocusEffect, useRouter } from "expo-router";
 import React, { useCallback, useEffect, useMemo, useState } from "react";

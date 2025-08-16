@@ -1,5 +1,5 @@
+import { Supplier, TypedSupplier } from "@/services";
 import { useResultStore } from "@/store/result";
-import { Supplier, TypedSupplier } from "@/use-cases";
 import { useEffect, useState } from "react";
 
 export function useGetSuppliers() {

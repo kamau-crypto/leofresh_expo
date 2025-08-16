@@ -1,6 +1,6 @@
 import { HillFreshPrimaryChip } from "@/components";
 import { ReadSingleMaterialRequestData } from "@/constants";
-import { MaterialRequest } from "@/use-cases";
+import { MaterialRequest } from "@/services";
 import { format } from "date-fns";
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, ScrollView, View } from "react-native";

@@ -1,16 +1,33 @@
-import { useSession } from "@/components";
+import { HillFreshHeader } from "@/components";
 import { useUserStore } from "@/store/user";
 import { Redirect, Stack } from "expo-router";
+import * as SecureStore from "expo-secure-store";
+import { View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function ProtectedLayout() {
-	const { session } = useSession();
 	const { user } = useUserStore();
+	const { top } = useSafeAreaInsets();
+	const store_key = SecureStore.getItem("auth_token");
 
-	if (!session || !user) {
+	console.log("User is", user);
+	console.log("Session is", store_key);
+
+	if (!user || !store_key) {
 		return <Redirect href={"/login"} />;
 	}
 	return (
-		<Stack>
+		<Stack
+			screenOptions={{
+				headerShown: false,
+				headerTransparent: true,
+				statusBarHidden: false,
+				header: () => (
+					<View style={{ paddingTop: top }}>
+						<HillFreshHeader />
+					</View>
+				),
+			}}>
 			<Stack.Screen
 				name='(tabs)'
 				options={{ headerShown: true, fullScreenGestureShadowEnabled: true }}
@@ -40,6 +57,7 @@ export default function ProtectedLayout() {
 				options={{
 					headerShown: false,
 					fullScreenGestureShadowEnabled: true,
+					presentation: "fullScreenModal",
 				}}
 			/>
 		</Stack>

@@ -1,8 +1,8 @@
 import { appColors, ReadPOSProfile } from "@/constants";
 import { useProfileStore } from "@/store/profile";
 
+import { POSProfile } from "@/services";
 import { useUserStore } from "@/store/user";
-import { POSProfile } from "@/use-cases";
 import { useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";

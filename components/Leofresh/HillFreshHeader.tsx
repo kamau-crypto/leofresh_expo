@@ -22,15 +22,16 @@ export function HillFreshHeader() {
 			/>
 			<View style={styles.cartUser}>
 				{user && user.type !== "Agent" ? (
-					<TouchableOpacity onPress={() => router.replace("/(tabs)/cart")}>
+					<TouchableOpacity
+						onPress={() => router.replace("/(protected)/(tabs)/cart")}>
 						<View style={{ flexDirection: "row", position: "relative" }}>
 							<NotificationHeaderCart />
 						</View>
 					</TouchableOpacity>
 				) : null}
-				<TouchableOpacity onPress={() => router.push("/settings")}>
+				<TouchableOpacity onPress={() => router.push("/(protected)/settings")}>
 					<Link
-						href='/settings'
+						href='/(protected)/settings'
 						asChild>
 						<Image
 							style={styles.userIcon}
@@ -91,6 +92,7 @@ const styles = StyleSheet.create({
 	logo: {
 		padding: 10,
 		justifyContent: "flex-start",
+		objectFit: "contain",
 		height: 50,
 		width: 120,
 		borderRadius: 10,

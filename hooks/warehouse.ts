@@ -1,3 +1,4 @@
+import { Warehouse } from "@/services";
 import { useProfileStore } from "@/store/profile";
 import { useProjectStore } from "@/store/project";
 import { useResultStore } from "@/store/result";
@@ -6,7 +7,6 @@ import {
 	useWarehousesStore,
 	useWarehouseStore,
 } from "@/store/warehouse";
-import { Warehouse } from "@/use-cases";
 import { useCallback, useEffect, useState } from "react";
 
 export function useGetWarehouse() {

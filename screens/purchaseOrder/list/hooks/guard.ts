@@ -1,5 +1,5 @@
 import { ReadMultipleMaterialRequestsData } from "@/constants";
-import { ReturnedPurchaseOrder } from "@/use-cases";
+import { ReturnedPurchaseOrder } from "@/services";
 
 export interface PurchaseOrderWithOrigin extends ReturnedPurchaseOrder {
 	origin: string;

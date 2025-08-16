@@ -6,9 +6,9 @@ import {
 } from "@/components";
 import { appColors, JournalAccounts, ReadPOSProfile } from "@/constants";
 import { useNamingSeries } from "@/hooks/naming_series";
+import { JournalEntry } from "@/services";
+import { Banking } from "@/services/banking";
 import { useProfileStore } from "@/store/profile";
-import { JournalEntry } from "@/use-cases";
-import { Banking } from "@/use-cases/banking";
 import { hideKeyboard } from "@/utils/keyboard";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
@@ -35,6 +35,18 @@ export function PaymentEntry() {
 					animating={true}
 					size={"small"}
 				/>
+			</View>
+		);
+	}
+
+	if (bankAccounts.length < 1) {
+		return (
+			<View>
+				<Text
+					style={styles.headerText}
+					variant='titleMedium'>
+					No Registered Banks were found
+				</Text>
 			</View>
 		);
 	}
@@ -70,7 +82,7 @@ function PaymentEntryForm({
 	const { show } = useSnackbar();
 	const { allAccounts } = useMemo(() => {
 		let allAccounts: JournalAccounts[] = [];
-		if (profile)
+		if (profile && bankAccounts.length > 0)
 			allAccounts = [
 				{
 					account: profile!.bank_account!, //Bank Account is similar to a Cash Account.
@@ -159,7 +171,7 @@ function PaymentEntryForm({
 		if (payment!.name) {
 			show({ message: "Payment Banked Successfully" });
 			reset();
-			router.replace("/(tabs)");
+			router.replace("/(protected)/(tabs)");
 			setIsLoading(false);
 		} else {
 			setIsLoading(false);

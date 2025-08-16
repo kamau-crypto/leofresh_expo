@@ -1,6 +1,6 @@
 import { ReadBankAccount } from "@/constants";
+import { Banking } from "@/services/banking";
 import { useProfileStore } from "@/store/profile";
-import { Banking } from "@/use-cases/banking";
 import { useEffect, useMemo, useState } from "react";
 
 //Retrieve the last payment invoice and make it as a reference when banking a payment

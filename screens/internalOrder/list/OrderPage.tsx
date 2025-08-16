@@ -4,7 +4,7 @@ import { useResultStore } from "@/store/result";
 
 import { useHillFreshTheme } from "@/components";
 import { NotFound } from "@/components/illustrations";
-import { MaterialRequest } from "@/use-cases/material.request";
+import { MaterialRequest } from "@/services/material.request";
 import { useFocusEffect, useRouter } from "expo-router";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import {

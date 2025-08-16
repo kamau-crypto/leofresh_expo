@@ -2,7 +2,7 @@
 
 import { MenuItemProps, useSnackbar } from "@/components";
 import { ResultInvoice, SalesStatusEnum } from "@/constants";
-import { SalesInvoice } from "@/use-cases";
+import { SalesInvoice } from "@/services";
 import { useRouter } from "expo-router";
 import { useMemo } from "react";
 

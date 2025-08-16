@@ -4,7 +4,7 @@ import {
 	PurchaseOrderDetails,
 	ReadPOSProfile,
 } from "@/constants";
-import { MaterialRequest, PurchaseOrder } from "@/use-cases";
+import { MaterialRequest, PurchaseOrder } from "@/services";
 
 export async function createPurchaseOrder({
 	data,

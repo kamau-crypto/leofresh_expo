@@ -1,6 +1,7 @@
 import { HillFreshFieldForm } from "@/components";
 import { appColors, CreateMeterReading } from "@/constants";
 import { useNamingSeries } from "@/hooks/naming_series";
+import { Meter } from "@/services/meter";
 import { useMeterReadingStore } from "@/store/meter";
 import { useProfileStore } from "@/store/profile";
 import {
@@ -8,7 +9,6 @@ import {
 	useCustomerTankStore,
 } from "@/store/tank";
 import { useUserStore } from "@/store/user";
-import { Meter } from "@/use-cases/meter";
 import { hideKeyboard } from "@/utils/keyboard";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";

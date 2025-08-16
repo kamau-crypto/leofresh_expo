@@ -21,16 +21,23 @@ export function Tanks() {
 	//
 	//If a shop has two tanks, then show them next to each other
 	const { tankDetails } = useCustomerTankDetailsStore();
+
+	console.log("Tank Details are", tankDetails);
 	const { tkReadings } = useMemo(() => {
 		let tkReadings: TankDetialsWithReadings[] = [];
 
-		if (tankDetails && tankReading) {
+		if (
+			tankDetails &&
+			tankDetails.length > 0 &&
+			tankReading &&
+			tankReading.length > 0
+		) {
 			//If we have more than one tank, we need to create a tank for the item
 			const readings: TankDetialsWithReadings[] = tankDetails.map(tk => ({
 				...tk,
 				water_height: tankReading[0] ? tankReading[0].height : 0,
 			}));
-			if (tankDetails[0].tank_num > 1) {
+			if (tankDetails[0].tank_num && tankDetails[0].tank_num > 1) {
 				tkReadings = [...readings, ...readings];
 			} else {
 				tkReadings = [...readings];
@@ -68,7 +75,7 @@ export function Tanks() {
 				<Text
 					variant='bodyMedium'
 					style={{ textAlign: "center" }}>
-					Could not find Tank/Meter Readings for {tankDetails[0].name}
+					Could not find Tank/Meter Readings for this shop
 				</Text>
 			</View>
 		);
@@ -118,7 +125,7 @@ export function Tanks() {
 						<Text
 							style={styles.text}
 							variant='headlineSmall'>
-							{tankReading[0].meter_reading ?? 0}
+							{tankReading[0].meter_reading}
 						</Text>
 					</View>
 					<View style={styles.reading}>
@@ -130,7 +137,7 @@ export function Tanks() {
 						<Text
 							style={styles.text}
 							variant='headlineSmall'>
-							{tankReading[0].volume ?? 0 * tankDetails[0].tank_num ?? 0}
+							{(tankReading[0].volume ?? 0) * (tankDetails[0].tank_num ?? 0)}
 						</Text>
 					</View>
 					<View style={styles.reading}>

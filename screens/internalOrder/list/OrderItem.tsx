@@ -5,7 +5,7 @@ import {
 	ReadSingleMaterialRequestData,
 	ReadSingleMaterialRequestItem,
 } from "@/constants";
-import { MaterialRequest } from "@/use-cases/material.request";
+import { MaterialRequest } from "@/services/material.request";
 import { appConfig } from "@/utils/config";
 import { format } from "date-fns";
 import { useCallback, useEffect, useState } from "react";

@@ -3,10 +3,10 @@ import { appColors, CreateMaterialRequest, ItemGroup } from "@/constants";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useNamingSeries } from "@/hooks/naming_series";
+import { MaterialRequest } from "@/services/material.request";
 import { useMaterialReqCartStore } from "@/store/cart";
 import { useProductsToPurchaseStore } from "@/store/products";
 import { useProfileStore } from "@/store/profile";
-import { MaterialRequest } from "@/use-cases/material.request";
 import { appConfig } from "@/utils/config";
 import { formatToLocalCurrency } from "@/utils/format";
 import { addDays, format, subDays } from "date-fns";

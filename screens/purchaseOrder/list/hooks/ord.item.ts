@@ -4,8 +4,8 @@ import {
 	PurchaseOrderStatusEnum,
 	ReadSingleMaterialRequestData,
 } from "@/constants";
+import { MaterialRequest } from "@/services/material.request";
 import { useMaterialReceptionStore } from "@/store/receptionstore";
-import { MaterialRequest } from "@/use-cases/material.request";
 import { useRouter } from "expo-router";
 import { useMemo } from "react";
 import { MaterialRequestWithOrigin } from "./guard";

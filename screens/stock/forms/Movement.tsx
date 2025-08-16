@@ -1,10 +1,10 @@
 import { HillFreshFieldForm, HillFreshPickerFormField } from "@/components";
 import { CreateStockMovementEntry } from "@/constants";
 import { useNamingSeries } from "@/hooks/naming_series";
+import { StockTransfer } from "@/services/stock.transfer";
 import { useProductsToSellStore } from "@/store/products";
 import { useProfileStore } from "@/store/profile";
 import { useWarehousesStore } from "@/store/warehouse";
-import { StockTransfer } from "@/use-cases/stock.transfer";
 import { hideKeyboard } from "@/utils/keyboard";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useBottomTabBarHeight } from "@react-navigation/bottom-tabs";

@@ -1,5 +1,4 @@
 import {
-	HillFreshHeader,
 	SessionProvider,
 	ThemeProvider,
 	useHillFreshTheme,
@@ -9,11 +8,9 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useEffect } from "react";
-import { View } from "react-native";
 import { PaperProvider } from "react-native-paper";
 import { registerTranslation } from "react-native-paper-dates";
 import "react-native-reanimated";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { SnackBarProvider } from "../components/context/SnackBarContext";
 
 export {
@@ -96,23 +93,11 @@ function ThemedApp() {
 }
 
 function RootLayoutNav() {
-	const { top } = useSafeAreaInsets();
-
 	return (
-		<Stack
-			screenOptions={{
-				headerShown: true,
-				headerTransparent: true,
-				statusBarHidden: false,
-				header: () => (
-					<View style={{ paddingTop: top }}>
-						<HillFreshHeader />
-					</View>
-				),
-			}}>
+		<Stack screenOptions={{}}>
 			<Stack.Screen
 				name='(protected)'
-				options={{ headerShown: true, fullScreenGestureShadowEnabled: true }}
+				options={{ headerShown: false, fullScreenGestureShadowEnabled: true }}
 			/>
 			<Stack.Screen
 				name='login'
