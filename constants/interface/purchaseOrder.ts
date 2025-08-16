@@ -1,0 +1,172 @@
+import { PaymentSchedule } from "./payment";
+
+export interface PurchaseOrderDetails {
+	supplier: string;
+	transaction_date: string;
+	project: string;
+	naming_series: string;
+	schedule_date: string;
+	company: string;
+	cost_center: string;
+	currency: string;
+	buying_price_list: string;
+	items: CreatePurchaseOrderItem[];
+	set_warehouse: string;
+}
+
+export interface CreatePurchaseOrderItem {
+	item_name: string;
+	item_code: string;
+	qty: number;
+	uom: string;
+	rate: number;
+	amount: number;
+	conversion_factor: number;
+}
+
+export interface GetPurchaseOrder {
+	name: string;
+	owner: string;
+	creation: Date;
+	modified: Date;
+	modified_by: string;
+	docstatus: number;
+	idx: number;
+	title: string;
+	naming_series: string;
+	supplier: string;
+	supplier_name: string;
+	transaction_date: Date;
+	schedule_date: Date;
+	company: string;
+	apply_tds: number;
+	is_subcontracted: number;
+	currency: string;
+	conversion_rate: number;
+	buying_price_list: string;
+	price_list_currency: string;
+	plc_conversion_rate: number;
+	ignore_pricing_rule: number;
+	total_qty: number;
+	total_net_weight: number;
+	base_total: number;
+	base_net_total: number;
+	total: number;
+	net_total: number;
+	tax_withholding_net_total: number;
+	base_tax_withholding_net_total: number;
+	tax_category: string;
+	base_taxes_and_charges_added: number;
+	base_taxes_and_charges_deducted: number;
+	base_total_taxes_and_charges: number;
+	taxes_and_charges_added: number;
+	taxes_and_charges_deducted: number;
+	total_taxes_and_charges: number;
+	base_grand_total: number;
+	base_rounding_adjustment: number;
+	base_in_words: string;
+	base_rounded_total: number;
+	grand_total: number;
+	rounding_adjustment: number;
+	rounded_total: number;
+	disable_rounded_total: number;
+	in_words: string;
+	advance_paid: number;
+	apply_discount_on: string;
+	base_discount_amount: number;
+	additional_discount_percentage: number;
+	discount_amount: number;
+	shipping_address: string;
+	shipping_address_display: string;
+	billing_address: string;
+	billing_address_display: string;
+	status: string;
+	advance_payment_status: string;
+	per_billed: number;
+	per_received: number;
+	group_same_items: number;
+	language: string;
+	is_internal_supplier: number;
+	represents_company: string;
+	party_account_currency: string;
+	is_old_subcontracting_flow: number;
+	doctype: string;
+	items: GetPurchaseOrderItem[];
+	pricing_rules: any[];
+	supplied_items: any[];
+	taxes: any[];
+	payment_schedule: PaymentSchedule[];
+}
+
+export interface GetPurchaseOrderItem {
+	name: string;
+	owner: string;
+	creation: Date;
+	modified: Date;
+	modified_by: string;
+	docstatus: number;
+	idx: number;
+	fg_item_qty: number;
+	item_code: string;
+	item_name: string;
+	schedule_date: Date;
+	item_group: string;
+	description: string;
+	image: string;
+	qty: number;
+	stock_uom: string;
+	sco_qty: number;
+	uom: string;
+	conversion_factor: number;
+	stock_qty: number;
+	price_list_rate: number;
+	last_purchase_rate: number;
+	base_price_list_rate: number;
+	margin_type: string;
+	margin_rate_or_amount: number;
+	rate_with_margin: number;
+	discount_percentage: number;
+	discount_amount: number;
+	distributed_discount_amount: number;
+	base_rate_with_margin: number;
+	rate: number;
+	amount: number;
+	base_rate: number;
+	base_amount: number;
+	stock_uom_rate: number;
+	is_free_item: number;
+	apply_tds: number;
+	net_rate: number;
+	net_amount: number;
+	base_net_rate: number;
+	base_net_amount: number;
+	warehouse: string;
+	actual_qty: number;
+	company_total_stock: number;
+	delivered_by_supplier: number;
+	against_blanket_order: number;
+	blanket_order_rate: number;
+	received_qty: number;
+	returned_qty: number;
+	billed_amt: number;
+	expense_account: string;
+	include_exploded_items: number;
+	weight_per_unit: number;
+	total_weight: number;
+	cost_center: string;
+	is_fixed_asset: number;
+	item_tax_rate: string;
+	page_break: number;
+	parent: string;
+	parentfield: string;
+	parenttype: string;
+	doctype: string;
+}
+
+export interface PurchaseOrderError {
+	session_expired: number;
+	exception: string;
+	exc_type: string;
+	exc: string;
+	_server_messages: string; //A JSON Array with the error message.
+}

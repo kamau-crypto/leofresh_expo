@@ -1,0 +1,228 @@
+import { PaymentSchedule } from "./payment";
+
+export interface ResultInvoice {
+	company: string;
+	name: string;
+	customer: string;
+	status: string;
+	grand_total: number;
+	due_date: string;
+	posting_date: string;
+	cost_center: string;
+	mpesa_amount: number;
+	cash_amount: number;
+}
+
+export interface CreateSalesInvoiceRecord {
+	naming_series: string;
+	posting_date: string;
+	weather: string;
+	due_date: string;
+	party_account_currency: string;
+	set_posting_time: 0 | 1;
+	//disable_rounded_total: 0 | 1;
+	debit_to: string;
+	unrealized_profit_loss_account: string;
+	company: string;
+	customer: string;
+	project: string;
+	cost_center: string;
+	currency: string;
+	selling_price_list: string;
+	grand_total: number;
+	items: CreateSalesInvItem[];
+	mpesa_amount: number;
+	cash_amount: number;
+	taxes?: SalesInvoiceRecordTax[];
+}
+
+export interface CreateSalesInvItem {
+	item_code: string;
+	item_name: string;
+	qty: number;
+	rate: number;
+	uom: string;
+	amount: number;
+	warehouse: string;
+	income_account: string;
+	expense_account: string;
+	cost_center: string;
+	project: string;
+	item_tax_template: string | null;
+	tax_rate: number | null;
+	tax_type: string | null;
+}
+
+export interface PurchaseInvoiceResult {
+	data: CreatedSalesInvoice;
+}
+export type SalesInvoiceItemWiseTaxDetails = Record<string, Array<number>>;
+
+export interface SalesInvoiceRecordTax {
+	charge_type: string;
+	account_head: string;
+	description: "VAT";
+	rate: number;
+	item_wise_tax_detail: SalesInvoiceItemWiseTaxDetails;
+}
+
+export interface CreatedSalesInvoice {
+	name: string;
+	owner: string;
+	creation: Date;
+	mpesa_amount: number;
+	cash_amount: number;
+	modified: Date;
+	modified_by: string;
+	docstatus: number;
+	idx: number;
+	naming_series: string;
+	customer: string;
+	customer_name: string;
+	company: string;
+	weather: string;
+	posting_date: Date;
+	posting_time: string;
+	set_posting_time: number;
+	due_date: Date;
+	is_pos: number;
+	is_consolidated: number;
+	is_return: number;
+	update_outstanding_for_self: number;
+	update_billed_amount_in_sales_order: number;
+	update_billed_amount_in_delivery_note: number;
+	is_debit_note: number;
+	cost_center: string;
+	project: string;
+	currency: string;
+	conversion_rate: number;
+	selling_price_list: string;
+	price_list_currency: string;
+	plc_conversion_rate: number;
+	ignore_pricing_rule: number;
+	update_stock: number;
+	total_qty: number;
+	total_net_weight: number;
+	base_total: number;
+	base_net_total: number;
+	total: number;
+	net_total: number;
+	tax_category: string;
+	base_total_taxes_and_charges: number;
+	total_taxes_and_charges: number;
+	base_grand_total: number;
+	base_rounding_adjustment: number;
+	base_rounded_total: number;
+	base_in_words: string;
+	grand_total: number;
+	rounding_adjustment: number;
+	use_company_roundoff_cost_center: number;
+	rounded_total: number;
+	in_words: string;
+	total_advance: number;
+	outstanding_amount: number;
+	disable_rounded_total: number;
+	apply_discount_on: string;
+	base_discount_amount: number;
+	is_cash_or_non_trade_discount: number;
+	additional_discount_percentage: number;
+	discount_amount: number;
+	total_billing_hours: number;
+	total_billing_amount: number;
+	base_paid_amount: number;
+	paid_amount: number;
+	base_change_amount: number;
+	change_amount: number;
+	allocate_advances_automatically: number;
+	only_include_allocated_payments: number;
+	write_off_amount: number;
+	base_write_off_amount: number;
+	write_off_outstanding_amount_automatically: number;
+	redeem_loyalty_points: number;
+	loyalty_points: number;
+	loyalty_amount: number;
+	dont_create_loyalty_points: number;
+	ignore_default_payment_terms_template: number;
+	po_no: string;
+	debit_to: string;
+	party_account_currency: string;
+	is_opening: string;
+	against_income_account: string;
+	amount_eligible_for_commission: number;
+	commission_rate: number;
+	total_commission: number;
+	group_same_items: number;
+	language: string;
+	status: string;
+	is_internal_customer: number;
+	is_discounted: number;
+	doctype: string;
+	items: SalesInvoiceItem[];
+	taxes: any[];
+	pricing_rules: any[];
+	packed_items: any[];
+	timesheets: any[];
+	payments: any[];
+	advances: any[];
+	payment_schedule: PaymentSchedule[];
+	sales_team: any[];
+}
+
+export interface SalesInvoiceItem {
+	name: string;
+	owner: string;
+	creation: Date;
+	modified: Date;
+	modified_by: string;
+	docstatus: number;
+	idx: number;
+	has_item_scanned: number;
+	item_name: string;
+	qty: number;
+	stock_uom: string;
+	uom: string;
+	conversion_factor: number;
+	stock_qty: number;
+	price_list_rate: number;
+	base_price_list_rate: number;
+	margin_type: string;
+	margin_rate_or_amount: number;
+	rate_with_margin: number;
+	discount_percentage: number;
+	discount_amount: number;
+	distributed_discount_amount: number;
+	base_rate_with_margin: number;
+	rate: number;
+	amount: number;
+	base_rate: number;
+	base_amount: number;
+	stock_uom_rate: number;
+	is_free_item: number;
+	grant_commission: number;
+	net_rate: number;
+	net_amount: number;
+	base_net_rate: number;
+	base_net_amount: number;
+	delivered_by_supplier: number;
+	income_account: string;
+	is_fixed_asset: number;
+	enable_deferred_revenue: number;
+	weight_per_unit: number;
+	total_weight: number;
+	warehouse: string;
+	use_serial_batch_fields: number;
+	allow_zero_valuation_rate: number;
+	incoming_rate: number;
+	item_tax_rate: string;
+	actual_batch_qty: number;
+	actual_qty: number;
+	company_total_stock: number;
+	delivered_qty: number;
+	cost_center: string;
+	page_break: number;
+	parent: string;
+	parentfield: string;
+	parenttype: string;
+	doctype: string;
+	__unsaved: number;
+}

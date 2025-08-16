@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Base configuration with expanded trust for restrictive networks -->
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />  <!-- Allows self-signed certs -->
+            <certificates src="@raw/google_cert" /> <!-- Google security certificate -->
+        </trust-anchors>
+    </base-config>
+
+    <!-- Domain-specific config for your primary API -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">prod.hillfresh.co.ke</domain>
+        <domain includeSubdomains="true">api.hillfresh.co.ke</domain>
+        <!-- Add any other domains your app communicates with -->
+        <domain includeSubdomains="true">cdn.hillfresh.co.ke</domain>
+        <domain includeSubdomains="true">media.hillfresh.co.ke</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+            <certificates src="@raw/google_cert" />
+        </trust-anchors>
+    </domain-config>
+
+    <!-- Google services domain configuration -->
+    <domain-config>
+        <domain includeSubdomains="true">google.com</domain>
+        <domain includeSubdomains="true">googleapis.com</domain>
+        <domain includeSubdomains="true">gstatic.com</domain>
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </domain-config>
+    <!-- Bypass configuration for common content delivery networks -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">cloudfront.net</domain>
+        <domain includeSubdomains="true">akamaiedge.net</domain>
+        <domain includeSubdomains="true">cloudflare.com</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="@raw/google_cert" />
+        </trust-anchors>
+    </domain-config>
+</network-security-config>

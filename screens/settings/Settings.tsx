@@ -1,0 +1,111 @@
+import { appColors, ReadPOSProfile } from "@/constants";
+import { useProfileStore } from "@/store/profile";
+
+import { useUserStore } from "@/store/user";
+import { POSProfile } from "@/use-cases";
+import { useRouter } from "expo-router";
+import React, { useEffect, useState } from "react";
+import { View } from "react-native";
+import { Button, Checkbox, Text } from "react-native-paper";
+import { Logout } from "./Logout";
+import { Results } from "./Results";
+import { ShopPicker } from "./ShopPicker";
+import { settingsStyles } from "./styles";
+
+export function SettingsScreen() {
+	const router = useRouter();
+
+	const { profile } = useProfileStore();
+	const { user } = useUserStore();
+
+	const [allProfiles, setProfiles] = useState<ReadPOSProfile[]>([]);
+	const posProfile = new POSProfile({ docType: "POS Profile" });
+
+	useEffect(() => {
+		const retrieveProjects = async () => {
+			const data = await posProfile.retrievePOSProfile({});
+			if (data) {
+				return setProfiles(data);
+			}
+			return;
+		};
+		retrieveProjects();
+	}, []);
+
+	return (
+		<View style={settingsStyles.container}>
+			<View
+				style={{
+					...settingsStyles.heading,
+					paddingVertical: 20,
+					rowGap: 20,
+					borderColor: appColors.colors.primary,
+					borderWidth: 2,
+				}}>
+				<Text
+					variant='titleMedium'
+					style={{ textAlign: "center", fontWeight: "bold", fontSize: 18 }}>
+					Welcome {user!.full_name}
+				</Text>
+				<View style={settingsStyles.cta}>
+					<Text
+						variant='titleMedium'
+						style={{
+							textAlign: "center",
+							fontWeight: "bold",
+							color: "black",
+							lineHeight: 30,
+						}}>
+						You are overseeing {"\n"}
+						{String(profile?.customer ?? "NO SHOP")} as a Sales Manager
+					</Text>
+				</View>
+				<Text
+					variant='bodyMedium'
+					style={{ textAlign: "center", fontWeight: "bold", fontSize: 14 }}>
+					Your email is {user?.email}
+				</Text>
+			</View>
+			<ShopPicker allProfiles={allProfiles} />
+			<Results />
+			<AutoSubmit />
+			<View style={{ padding: 10 }}>
+				<Text> Account Management</Text>
+				<Button
+					onPress={() => router.push("/change-password")}
+					mode='outlined'>
+					Reset Password
+				</Button>
+			</View>
+			<View style={{ paddingBottom: 30 }}>
+				<Logout />
+			</View>
+		</View>
+	);
+}
+
+//Might not be needed in the long run.
+function AutoSubmit() {
+	const [isChecked, setIsChecked] = useState<boolean>(true);
+	const { updateUser, user } = useUserStore();
+
+	const handleIsChecked = () => {
+		setIsChecked(prev => !prev);
+		const updatedUser = { ...user!, autosubmit: isChecked };
+		updateUser(updatedUser);
+	};
+
+	return (
+		<View
+			style={{
+				...settingsStyles.result,
+				backgroundColor: appColors.colors.onPrimary,
+			}}>
+			<Checkbox
+				status={isChecked ? "checked" : "unchecked"}
+				onPress={handleIsChecked}
+			/>
+			<Text variant='titleMedium'>Auto Submit Sales and Purchase Orders</Text>
+		</View>
+	);
+}

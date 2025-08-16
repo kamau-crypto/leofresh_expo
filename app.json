@@ -1,0 +1,109 @@
+{
+	"expo": {
+		"name": "Leofresh",
+		"description": "LeoFresh Limited Mobile app",
+		"slug": "leofresh",
+		"version": "2.0.6",
+		"orientation": "portrait",
+		"icon": "./assets/images/icon.png",
+		"jsEngine": "hermes",
+		"scheme": "myapp",
+		"userInterfaceStyle": "automatic",
+		"newArchEnabled": true,
+		"androidStatusBar": {
+			"barStyle": "dark-content"
+		},
+		"splash": {
+			"image": "./assets/images/adaptive-icon.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#ffffff"
+		},
+		"ios": {
+			"supportsTablet": true,
+			"infoPlist": {
+				"NSFaceIDUsageDescription": "This app uses Face ID for secure authentication and biometric login.",
+				"NSBiometricUsageDescription": "This app uses biometric authentication (Touch ID/Face ID) for secure login."
+			}
+		},
+		"android": {
+			"edgeToEdgeEnabled": true,
+			"networkSecurityConfig": "@xml/network_security_config",
+			"permissions": [
+				"INTERNET",
+				"ACCESS_NETWORK_STATE",
+				"ACCESS_WIFI_STATE",
+				"CHANGE_NETWORK_STATE",
+				"CHANGE_WIFI_STATE",
+				"FOREGROUND_SERVICE",
+				"USE_FINGERPRINT",
+				"USE_BIOMETRIC",
+				"INTERNET",
+				"ACCESS_NETWORK_STATE",
+				"ACCESS_WIFI_STATE",
+				"CHANGE_NETWORK_STATE",
+				"CHANGE_WIFI_STATE",
+				"FOREGROUND_SERVICE"
+			],
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/images/adaptive-icon.png",
+				"backgroundColor": "#ffffff"
+			},
+			"package": "com.hillfresh.hillfresh"
+		},
+		"web": {
+			"bundler": "metro",
+			"output": "static",
+			"favicon": "./assets/images/favicon.png"
+		},
+		"plugins": [
+			"expo-router",
+			[
+				"expo-asset",
+				{
+					"assets": ["./assets/hillfresh/logo.png"]
+				}
+			],
+			[
+				"expo-secure-store",
+				{
+					"configureAndroidBackup": true,
+					"faceIDPermission": "Allow $(PRODUCT_NAME) to access your Face ID biometric data."
+				}
+			],
+			[
+				"expo-build-properties",
+				{
+					"android": {
+						"buildFromSource": true,
+						"enableBundleCompression": true,
+						"enableProguardInReleaseBuilds": true,
+						"enableShrinkResourcesInReleaseBuilds": true
+					}
+				}
+			],
+			[
+				"expo-font",
+				{
+					"fonts": ["./assets/fonts/Quicksand.ttf"]
+				}
+			],
+			"expo-web-browser"
+		],
+		"experiments": {
+			"typedRoutes": true
+		},
+		"extra": {
+			"EXPO_ROUTER_APP_ROOT": "./app",
+			"router": {
+				"origin": false
+			},
+			"eas": {
+				"projectId": "e02bfa15-ec05-4619-baf2-83bfa3c979e8"
+			}
+		},
+		"owner": "kamaupeter343",
+		"runtimeVersion": {
+			"policy": "appVersion"
+		}
+	}
+}
