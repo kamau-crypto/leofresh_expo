@@ -96,7 +96,7 @@ export const CreatePurchaseOrderViaCart = React.memo(
 		const handleMakePurchaseOrder = async (data: PurchaseOrderDetails) => {
 			setIsLoading(true);
 			let responseString: string = "";
-			if (data.supplier.toLowerCase().includes("hillfresh")) {
+			if (data.supplier.toLowerCase().includes("leofresh")) {
 				responseString = await createInternalProcurement({
 					data,
 					materialRequest,
