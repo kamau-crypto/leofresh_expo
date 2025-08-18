@@ -85,7 +85,7 @@ export function useSalesVAT() {
 
 		const taxes_charges: SalesInvoiceRecordTax = {
 			charge_type: "On Net Total",
-			account_head: "VAT - HBL",
+			account_head: "VAT - LBL",
 			description: "VAT",
 			rate: 0,
 			item_wise_tax_detail: taxDetails,
