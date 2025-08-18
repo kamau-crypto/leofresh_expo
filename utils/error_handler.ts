@@ -16,7 +16,7 @@ interface FrappeErrorResponse {
 export function extractFrappeErrorMessage(error: any): string {
 	// Handle Axios errors
 	if (isAxiosError(error)) {
-		return extractFrappeErrorMessage(error.response?.data || error.message);
+		return extractFrappeErrorMessage(error.response?.data);
 	}
 
 	// Handle Frappe error response objects
