@@ -25,7 +25,7 @@ export default function Login() {
 				<Text
 					variant='titleLarge'
 					style={styles.heading}>
-					Login to HillFresh
+					Login to Leofresh
 				</Text>
 			</View>
 			<ScrollView contentContainerStyle={styles.container}>
