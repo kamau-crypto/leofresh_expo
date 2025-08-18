@@ -104,7 +104,7 @@ export function CreateMaterialOrderItems({
 				show({ message: "Order created successfully" });
 				setTimeout(() => {
 					removeItems();
-					router.push("/purchases");
+					router.push("/(protected)/(tabs)/purchases");
 				}, 2000);
 			} else {
 				show({ message: "Failed to create the order" });

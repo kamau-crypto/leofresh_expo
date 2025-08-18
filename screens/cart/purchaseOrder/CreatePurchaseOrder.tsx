@@ -115,7 +115,7 @@ export const CreatePurchaseOrderViaCart = React.memo(
 				setIsLoading(false);
 				setTimeout(() => {
 					removeItems();
-					router.push("/purchases");
+					router.push("/(protected)/(tabs)/purchases");
 				}, 1000);
 			} else {
 				show({ message: "Failed to make the order" });

@@ -34,12 +34,12 @@ export function SalesPage() {
 function CreateSalesFab() {
 	const router = useRouter();
 	return (
-		<TouchableOpacity onPress={() => router.push("/add-sales")}>
+		<TouchableOpacity onPress={() => router.push("/(protected)/add-sales")}>
 			<FAB
 				icon='plus'
 				color={appColors.colors.onPrimary}
 				style={{ ...styles.fab, backgroundColor: appColors.colors.primary }}
-				onPress={() => router.push("/add-sales")}
+				onPress={() => router.push("/(protected)/add-sales")}
 			/>
 		</TouchableOpacity>
 	);

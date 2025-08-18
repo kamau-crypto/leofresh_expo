@@ -22,10 +22,10 @@ export default function HomeScreen() {
 		//If we have a user, but not profile, redirect to settings.
 		//If we have a user profile, and their user.type is of type agent, redirect to the Agent page.Rewire this logic to ensure that we have more than one app ready for usage.
 		if (user && user.type !== "Agent" && !profile?.customer) {
-			router.push("/settings");
+			router.push("/(protected)/settings");
 		} else {
 			if (user!.type === "Agent") {
-				return router.replace("/agent");
+				return router.replace("/(protected)/agent");
 			}
 		}
 	});

@@ -53,7 +53,7 @@ export function useGenerateSalesInvMenuItems({
 				title: "Pay",
 				leadingIcon: "cash",
 				onPress: () => {
-					return router.replace("/bank");
+					return router.replace("/(protected)/(tabs)/bank");
 				},
 			},
 			{

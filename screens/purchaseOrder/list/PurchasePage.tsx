@@ -40,7 +40,7 @@ function CreateSalesFab() {
 				color={theme.colors.onPrimary}
 				style={{ ...styles.fab, backgroundColor: theme.colors.primary }}
 				onPress={() => {
-					router.push("/add-purchase");
+					router.push("/(protected)/add-purchase");
 				}}
 			/>
 		</TouchableOpacity>

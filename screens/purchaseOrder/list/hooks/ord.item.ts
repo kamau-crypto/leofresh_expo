@@ -55,10 +55,10 @@ export function useGenerateInternalProcMenuItems({
 							"Reception Items added to the cart. Taking you to the cart",
 						action: {
 							label: "Go To Cart",
-							onPress: () => router.replace("/(tabs)/cart"),
+							onPress: () => router.replace("/(protected)/(tabs)/cart"),
 						},
 					});
-					router.replace("/(tabs)/cart");
+					router.replace("/(protected)/(tabs)/cart");
 					refetch();
 				},
 			},

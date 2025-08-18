@@ -152,7 +152,7 @@ export function RequestMaterials() {
 			message: "Items added to cart successfully",
 			action: {
 				label: "Go to Cart",
-				onPress: () => router.push("/(tabs)/cart"),
+				onPress: () => router.push("/(protected)/(tabs)/cart"),
 			},
 		});
 	};

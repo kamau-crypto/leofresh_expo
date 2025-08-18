@@ -35,7 +35,7 @@ function CreateOrderFab() {
 				icon='plus'
 				style={{ ...styles.fab, backgroundColor: theme.colors.primary }}
 				onPress={() => {
-					router.push("/add-request");
+					router.push("/(protected)/add-request");
 				}}
 			/>
 		</TouchableOpacity>

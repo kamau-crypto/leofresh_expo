@@ -116,13 +116,13 @@ export function MaterialReceptionItems({
 		if (stockTranfer.name || items.per_received === 100) {
 			setIsLoading(false);
 			clearReceptionCart();
-			router.replace("/(tabs)/purchases");
+			router.replace("/(protected)/(tabs)/purchases");
 			show({ message: "Stock Updated Successfully" });
 		} else {
 			clearReceptionCart();
 			setIsLoading(false);
 			show({ message: "Stock Updated Successfully" });
-			router.replace("/(tabs)/purchases");
+			router.replace("/(protected)/(tabs)/purchases");
 		}
 		return;
 	};

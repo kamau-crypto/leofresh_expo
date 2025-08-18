@@ -31,7 +31,7 @@ function CreateExpenseFab() {
 	return (
 		<TouchableOpacity>
 			<FAB
-				onPress={() => router.push("/add-expense")}
+				onPress={() => router.push("/(protected)/add-expense")}
 				icon={"plus"}
 				variant='primary'
 				color={appColors.colors.onPrimary}

@@ -120,13 +120,13 @@ export function PurchaseOrderReceptionItems({
 			});
 			setIsLoading(false);
 			clearReceptionCart();
-			router.replace("/(tabs)/purchases");
+			router.replace("/(protected)/(tabs)/purchases");
 			show({ message: "Purchase Invoice Created Successfully" });
 		} else {
 			clearReceptionCart();
 			setIsLoading(false);
 			show({ message: "Purchase Receipt Created Successfully" });
-			router.replace("/(tabs)/purchases");
+			router.replace("/(protected)/(tabs)/purchases");
 		}
 		return;
 	};
