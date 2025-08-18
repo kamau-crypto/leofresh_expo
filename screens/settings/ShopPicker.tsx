@@ -37,7 +37,7 @@ export function ShopPicker({ allProfiles }: { allProfiles: ReadPOSProfile[] }) {
 
 	const items = useMemo(() => {
 		let prof: Array<{ label: string; value: string; enabled: boolean }> = [];
-		if (allProfiles.length > 1) {
+		if (allProfiles.length > 0) {
 			const groupedProfiles = groupPOSProfiles(allProfiles);
 			//
 			//Have a disabled field here such that the user assigned to a certain shop cannot change and make transactions under another shop.
@@ -76,7 +76,7 @@ export function ShopPicker({ allProfiles }: { allProfiles: ReadPOSProfile[] }) {
 			//Check if the user is permitted to visit this shop
 			updateProfile(filteredProf);
 			setTimeout(() => {
-				router.replace("/(tabs)");
+				router.replace("/(protected)/(tabs)");
 			}, 100);
 		}
 	};
