@@ -1,41 +1,40 @@
 import * as React from "react";
-import { View } from "react-native";
-import {
-	Button,
-	Dialog,
-	PaperProvider,
-	Portal,
-	Text,
-} from "react-native-paper";
+import { StyleProp, ViewStyle } from "react-native";
+import { Button, Dialog, Portal } from "react-native-paper";
 
 interface HillFreshDialogProps {
 	showDialog?: () => void;
 	hideDialog: () => void;
 	isOpen: boolean;
+	content: React.JSX.Element;
+	contentStyle?: StyleProp<ViewStyle>;
+	dialogHeader: string;
 }
 
 export function HillFreshDialog({
 	hideDialog,
 	showDialog,
 	isOpen,
+	content,
+	contentStyle,
+	dialogHeader,
 }: HillFreshDialogProps) {
+	const style: StyleProp<ViewStyle> = !contentStyle
+		? { padding: 10, width: "100%" }
+		: contentStyle;
+
 	return (
-		<PaperProvider>
-			<View>
-				<Portal>
-					<Dialog
-						visible={isOpen}
-						onDismiss={hideDialog}>
-						<Dialog.Title>Alert</Dialog.Title>
-						<Dialog.Content>
-							<Text variant='bodyMedium'>This is simple dialog</Text>
-						</Dialog.Content>
-						<Dialog.Actions>
-							<Button onPress={hideDialog}>Done</Button>
-						</Dialog.Actions>
-					</Dialog>
-				</Portal>
-			</View>
-		</PaperProvider>
+		<Portal>
+			<Dialog
+				style={{ display: "flex", maxHeight: "95%" }}
+				visible={isOpen}
+				onDismiss={hideDialog}>
+				<Dialog.Title>{dialogHeader}</Dialog.Title>
+				<Dialog.Content style={style}>{content}</Dialog.Content>
+				<Dialog.Actions>
+					<Button onPress={hideDialog}>Close</Button>
+				</Dialog.Actions>
+			</Dialog>
+		</Portal>
 	);
 }
