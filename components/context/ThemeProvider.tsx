@@ -1,6 +1,6 @@
 import { appColors, appDarkColors } from "@/constants";
 import { HillFreshError } from "@/utils/customError";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { MMKVStorage } from "@/utils/storage";
 import React, {
 	createContext,
 	ReactNode,
@@ -34,7 +34,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
 	useEffect(() => {
 		const loadTheme = async () => {
-			const savedTheme = await AsyncStorage.getItem("theme");
+			const savedTheme = await MMKVStorage.getItem("theme");
 			if (savedTheme) setIsDarkMode(savedTheme === "dark");
 		};
 		loadTheme();
@@ -43,7 +43,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 	const toggleTheme = async () => {
 		const newMode = !isDarkMode;
 		setIsDarkMode(newMode);
-		await AsyncStorage.setItem("theme", newMode ? "dark" : "light");
+		await MMKVStorage.setItem("theme", newMode ? "dark" : "light");
 	};
 
 	// const baseFont: MD3Type = {
