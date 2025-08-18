@@ -48,7 +48,7 @@
 				"foregroundImage": "./assets/images/adaptive-icon.png",
 				"backgroundColor": "#ffffff"
 			},
-			"package": "com.hillfresh.hillfresh"
+			"package": "com.leofresh.leofresh"
 		},
 		"web": {
 			"bundler": "metro",
@@ -60,7 +60,7 @@
 			[
 				"expo-asset",
 				{
-					"assets": ["./assets/hillfresh/logo.png"]
+					"assets": ["./assets/leofresh/logo.png"]
 				}
 			],
 			[
@@ -99,7 +99,7 @@
 				"origin": false
 			},
 			"eas": {
-				"projectId": "e02bfa15-ec05-4619-baf2-83bfa3c979e8"
+				"projectId": "5ad3bdb2-4588-47b2-bac5-4b762a79888b"
 			}
 		},
 		"owner": "kamaupeter343",
