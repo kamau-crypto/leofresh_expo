@@ -10,10 +10,10 @@ type ProfileStore = {
 
 const secureStorage = {
 	getItem: async (name: string): Promise<string | null> => {
-		return await SecureStore.getItemAsync(name);
+		return SecureStore.getItem(name);
 	},
 	setItem: async (name: string, value: string): Promise<void> => {
-		await SecureStore.setItemAsync(name, value);
+		return SecureStore.setItem(name, value);
 	},
 	removeItem: async (name: string): Promise<void> => {
 		await SecureStore.deleteItemAsync(name);
@@ -32,7 +32,7 @@ export const useProfileStore = create<ProfileStore>()(
 		}),
 		{
 			name: "profile",
-			storage: createJSONStorage(() => secureStorage), // Use Secure storage to store tokens but for complex stores, use React Native Async Storage.
+			storage: createJSONStorage(() => secureStorage), // [ ] TODO Use Secure storage to store tokens but for complex stores, use React Native Async Storage.
 		}
 	)
 );
