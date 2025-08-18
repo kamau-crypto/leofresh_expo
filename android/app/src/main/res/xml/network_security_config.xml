@@ -11,11 +11,11 @@
 
     <!-- Domain-specific config for your primary API -->
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">prod.hillfresh.co.ke</domain>
-        <domain includeSubdomains="true">api.hillfresh.co.ke</domain>
+        <domain includeSubdomains="true">test.leofresh.co.ke</domain>
+        <domain includeSubdomains="true">app.leofresh.co.ke</domain>
         <!-- Add any other domains your app communicates with -->
-        <domain includeSubdomains="true">cdn.hillfresh.co.ke</domain>
-        <domain includeSubdomains="true">media.hillfresh.co.ke</domain>
+        <domain includeSubdomains="true">cdn.leofresh.co.ke</domain>
+        <domain includeSubdomains="true">media.leofresh.co.ke</domain>
         <trust-anchors>
             <certificates src="system" />
             <certificates src="user" />
