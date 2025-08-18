@@ -100,11 +100,11 @@ if (process.env.NODE_ENV === "production") {
 	};
 
 	// Enable caching in production
-	config.cacheStores = [
-		{
-			type: "file",
-		},
-	];
+	// config.cacheStores = [
+	// 	{
+	// 		type: "file",
+	// 	},
+	// ];
 }
 
 module.exports = config;
