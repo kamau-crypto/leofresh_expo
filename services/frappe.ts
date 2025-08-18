@@ -173,7 +173,7 @@ export class FrappeInstance {
 	 */
 	public async frappeSubmit({ doc }: { doc: any }): Promise<any> {
 		try {
-			const response = await axios.post(
+			return await axios.post(
 				appConfig.CLIENT,
 				{ doc },
 				{
@@ -185,7 +185,6 @@ export class FrappeInstance {
 					timeoutErrorMessage: "Failed to Submit",
 				}
 			);
-			return response.data;
 		} catch (error) {
 			throw new HillFreshError({ message: "Failed to submit document" });
 		}

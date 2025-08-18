@@ -120,7 +120,6 @@ export class MaterialRequest extends FrappeInstance {
 			const doc = await this.retrieveMaterialRequest({ material_req: name });
 			const materialReq: AxiosResponse<ReadSubmittedMaterialRequest> =
 				await this.frappeSubmit({ doc });
-
 			return materialReq.data.message;
 		} catch (error: any) {
 			const msg = extractFrappeErrorMessage(error);
