@@ -266,7 +266,6 @@ export function CreateSales() {
 		const itemsLessVATInPriceList = removeVATFromPriceList({
 			data: itemsWithVATInPriceList,
 		});
-		console.log("Data To Create Sales Inv", itemsLessVATInPriceList);
 
 		const sales = await salesInvoice.createSalesInvoice({
 			inv: itemsLessVATInPriceList,
@@ -360,7 +359,7 @@ export function CreateSales() {
 			show({
 				message: "Sales Invoice Created",
 			});
-			router.replace("/(tabs)/sales");
+			router.replace("/(protected)/(tabs)/sales");
 		} else {
 			setIsLoading(false);
 		}
