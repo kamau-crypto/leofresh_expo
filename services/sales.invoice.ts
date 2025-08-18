@@ -54,7 +54,6 @@ export class SalesInvoice extends SalesOrder {
 			JSON.parse(
 				e.response.data._server_messages,
 				function (this: any, _key: string, _value: any) {
-					console.log("Current Error is", this);
 					throw new HillFreshError({
 						message:
 							"Sales Invoice not retrieved " +
@@ -90,9 +89,7 @@ export class SalesInvoice extends SalesOrder {
 
 	async cancelSalesInvoice({ name }: { name: string }) {
 		try {
-			console.log("I am deleting");
 			const res = await this.frappeCancel({ doctype: this.salesDocType, name });
-			console.log("I deleted", res.message);
 			return res;
 		} catch (e: any) {
 			JSON.parse(
