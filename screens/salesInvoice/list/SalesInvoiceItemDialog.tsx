@@ -121,7 +121,7 @@ function InvoiceItem({ item }: { item: SalesInvoiceItem }) {
 				padding: 3,
 			}}>
 			<Text>
-				{`${item.qty} ${item.uom}`}
+				{`${item.qty} ${item.stock_uom}`}
 				{item.qty > 1 ? "s" : null}
 			</Text>
 			<Text>{item.item_name}</Text>
