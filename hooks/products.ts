@@ -21,7 +21,7 @@ export function useGetSalesProducts() {
 		const retrieveSellableItems = async () => {
 			const response: SalesItems[] = await products.retrieveSellingItemPrices();
 			const itemsToPurchase = response.filter(
-				iT => iT.item_group === ItemGroup.Products
+				iT => iT.item_group === ItemGroup.Products || "Leofresh Products"
 			);
 			if (response) {
 				setItems(itemsToPurchase);
