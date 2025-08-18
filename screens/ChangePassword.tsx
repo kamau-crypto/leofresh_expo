@@ -22,7 +22,7 @@ interface ChangePassword {
 export function ChangePassword() {
 	const schema: ZodType<ChangePassword> = z
 		.object({
-			email: z.string().email(),
+			email: z.email(),
 			oldPassword: z.string().min(4),
 			newPassword: z.string().min(4),
 			confirmPassword: z.string().min(4),

@@ -38,12 +38,11 @@ const meteredWaterSchema: ZodType<CreateMeterReading> = z.object({
 	mpesa: z.coerce.number(),
 	waste: z.number(),
 	current_reading: z.coerce.number({
-		description: "The current reading of water at your shop",
-	}),
+	}).describe("The current reading of water at your shop"),
 	quantity: z.number().min(1),
 	status: z.string().min(0),
 	tank: z
-		.string({ required_error: "A tank is required to store the data" })
+		.string({ error: "A tank is required to store the data" })
 		.min(0),
 	variation: z.number().min(0),
 	created_by: z.string(),

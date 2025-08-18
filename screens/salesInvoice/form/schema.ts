@@ -61,62 +61,61 @@ export interface BottledWaterWithImage extends SalesItem {
 }
 export const SalesInvoiceSchema: ZodType<BulkWaterSalesInvoice> = z.object({
 	transaction_date: z.date(),
-	weather: z.string({ description: "Weather is required" }),
+	weather: z.string().describe("Weather is required"),
 	customer: z.string(),
-	grand_total: z.number({ required_error: "A Total is required" }),
+	grand_total: z.number({ error: "A Total is required" }),
 	cost_center: z.string(),
 	project: z.string(),
 });
 
 export const createSalesInvoiceSchema: ZodType<CreateSalesInvoice> = z.object({
-	posting_date: z.string({}),
-	company: z.string({}),
-	selling_price_list: z.string({}),
-	debit_to: z.string({}),
-	party_account_currency: z.string({}),
-	naming_series: z.string({}),
-	currency: z.string({}),
-	update_stock: z.number(),
-	due_date: z.string({
-		description: "due_date",
-		required_error: "due date required",
+	posting_date: z.string({ error: "Posting date is required" }),
+	company: z.string({ error: "Company is required" }),
+	selling_price_list: z.string({
+		error: "Selling price list is required",
 	}),
-	weather: z.string({
-		description: "weather",
-		required_error: "weather is required",
+	debit_to: z.string({ error: "Debit to is required" }),
+	party_account_currency: z.string({
+		error: "Party account currency is required",
 	}),
-	customer: z.string({ description: "customer", required_error: "customer" }),
-	grand_total: z.number({
-		required_error: "A Total is required",
-		description: "grand total",
-	}),
-	cost_center: z.string({ description: "cst", required_error: "cost center" }),
+	naming_series: z.string({ error: "Naming series is required" }),
+	currency: z.string({ error: "Currency is required" }),
+	update_stock: z.number({ error: "Update stock is required" }),
+	due_date: z.string({ error: "Due date required" }),
+	weather: z.string({ error: "Weather is required" }),
+	customer: z.string({ error: "Customer Needed" }),
+	grand_total: z
+		.number({ error: "A Total is required" })
+		.describe("grand total"),
+	cost_center: z.string({ error: "Cost center is required" }).describe("cst"),
 	mpesa: z.coerce.number().min(0),
 	cash: z.coerce.number().min(0),
-	project: z.string({ description: "project", required_error: "Project" }),
-	total_bottled: z.coerce.number({}),
+	project: z.string({ error: "Project is required" }).describe("project"),
+	total_bottled: z.coerce.number(),
 	items: z
 		.array(
 			z.object({
-				warehouse: z.string({ description: "warehouse" }),
-				income_account: z.string({ description: "icome acc" }),
-				item_name: z.string({ required_error: "Item name is required" }),
-				item_code: z.string({ required_error: "Item name is required" }),
-				qty: z.coerce.number({ required_error: "Item quantity is required" }),
-				rate: z.number({ required_error: "Item Rate is required" }),
-				amount: z.number({ required_error: "Item Total is required" }),
-				uom: z.string({ description: "uom" }),
-				tax_rate: z.number({ description: "Tax Rate is optional" }).nullable(),
+				warehouse: z
+					.string({ error: "Warehouse is required" })
+					.describe("warehouse"),
+				income_account: z
+					.string({ error: "Income account is required" })
+					.describe("income acc"),
+				item_name: z.string({ error: "Item name is required" }),
+				item_code: z.string({ error: "Item code is required" }),
+				qty: z.coerce.number({ error: "Item quantity is required" }),
+				rate: z.number({ error: "Item Rate is required" }),
+				amount: z.number({ error: "Item Total is required" }),
+				uom: z.string({ error: "UOM is required" }).describe("uom"),
+				tax_rate: z.number().nullable().describe("Tax Rate is optional"),
 				item_tax_template: z
-					.string({
-						description: "Item Tax Template is Optional",
-					})
-					.nullable(),
+					.string()
+					.nullable()
+					.describe("Item Tax Template is Optional"),
 				tax_type: z
-					.string({
-						description: "Product Tax Account not yet setup",
-					})
-					.nullable(),
+					.string()
+					.nullable()
+					.describe("Product Tax Account not yet setup"),
 			})
 		)
 		.transform(items => {
@@ -128,27 +127,20 @@ export const createSalesInvoiceSchema: ZodType<CreateSalesInvoice> = z.object({
 			}
 			return items;
 		}),
-	bulk_water: z
-		.object({
-			previous_water_reading: z
-				.number()
-				.max(10000000, { message: "Reading is excessively high" }),
-			current_water_reading: z.coerce
-				.number({
-					required_error: "The current water reading is required",
-					description: "The current water reading",
-				})
-				.max(10000000, { message: "The maximum limit is 9,999,999.9" })
-				.min(0, { message: "Your water reading cannot be less than 0" }),
-			water_used: z.number({
-				required_error: "The amount of water sold in litres",
-			}),
-			waste: z.number(),
-			billable_water: z.number(),
-			total_bulk: z.coerce.number(),
-			rate: z.coerce
-				.number({ description: "Rate must be greater than 5" })
-				.min(5),
-		})
-		.required(),
+	bulk_water: z.object({
+		previous_water_reading: z
+			.number()
+			.max(10000000, { message: "Reading is excessively high" }),
+		current_water_reading: z.coerce
+			.number({ error: "The current water reading is required" })
+			.max(10000000, { message: "The maximum limit is 9,999,999.9" })
+			.min(0, { message: "Your water reading cannot be less than 0" }),
+		water_used: z.number({
+			error: "The amount of water sold in litres",
+		}),
+		waste: z.number(),
+		billable_water: z.number(),
+		total_bulk: z.coerce.number(),
+		rate: z.coerce.number({ error: "Rate must be greater than 5" }).min(5),
+	}),
 });

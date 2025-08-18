@@ -6,16 +6,16 @@ export const createStockMovementEntry: ZodType<CreateStockMovementEntry> =
 	z.object({
 		stock_entry_type: z.string(),
 		delivery_note: z.string({
-			required_error: "A delivery note is needed to complete this order",
+			error: "A delivery note is needed to complete this order",
 		}),
 		driver_name: z.string({
-			required_error: "The name of the driver is required",
+			error: "The name of the driver is required",
 		}),
 		material_request: z.string({
-			required_error: "The name of the Material Request",
+			error: "The name of the Material Request",
 		}),
 		reg_no: z.string({
-			required_error: "The delivery vehicle Registration Number is needed",
+			error: "The delivery vehicle Registration Number is needed",
 		}),
 		items: z
 			.array(

@@ -16,12 +16,12 @@ export const createMaterialRequest: ZodType<CustomCreateMaterialRequest> =
 	z.object({
 		company: z.string(),
 		material_request_type: z.string(),
-		schedule_date: z.date({ required_error: "A date of delivery is needed" }),
+		schedule_date: z.date({ error: "A date of delivery is needed" }),
 		set_from_warehouse: z.string({
-			required_error: "The Warehouse of Origin is Needed to move the goods",
+			error: "The Warehouse of Origin is Needed to move the goods",
 		}),
 		set_warehouse: z.string({
-			required_error: "The Warehouse where to move the items to is required",
+			error: "The Warehouse where to move the items to is required",
 		}),
 		purpose: z.string({}),
 		items: z

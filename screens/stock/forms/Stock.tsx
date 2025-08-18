@@ -49,7 +49,7 @@ const stock_items_schema: ZodType<CreateStockReconciliation> = z.object({
 				item_code: z.string(),
 				item_name: z.string(),
 				warehouse: z.string(),
-				qty: z.coerce.number({ required_error: "Quantity is required" }).min(0),
+				qty: z.coerce.number({ error: "Quantity is required" }).min(0),
 				valuation_rate: z.number(),
 			})
 		)

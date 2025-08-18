@@ -21,7 +21,7 @@ interface CustomCreateStockMovementEntry extends CreateStockMovementEntry {
 const stock_movement_schema: ZodType<CustomCreateStockMovementEntry> = z.object(
 	{
 		naming_series: z.string(),
-		target: z.string({ required_error: "The target warehouse is required" }),
+		target: z.string({ error: "The target warehouse is required" }),
 		stock_entry_type: z.string(),
 		items: z.array(
 			z.object({
@@ -30,7 +30,7 @@ const stock_movement_schema: ZodType<CustomCreateStockMovementEntry> = z.object(
 				s_warehouse: z.string(),
 				t_warehouse: z.string(),
 				qty: z.coerce
-					.number({ description: "Item Quantity is required" })
+					.number().describe("Item Quantity is required")
 					.min(0),
 				uom: z.string(),
 				conversion_factor: z.number(),

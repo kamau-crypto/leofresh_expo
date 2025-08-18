@@ -17,10 +17,9 @@ export function ForgotPassword() {
 	const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 	const schema: ZodType<ResetUserPassword> = z.object({
 		email: z
-			.string({
-				required_error: "A valid email is required reset your password",
-			})
-			.email(),
+			.email({
+				error: "A valid email is required reset your password",
+			}),
 	});
 	const { show } = useSnackbar();
 	const router = useRouter();

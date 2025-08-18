@@ -19,16 +19,15 @@ interface CreatePurchaseInvoiceItem
 //For Purchase Invoice
 export const createPurchaseInvoiceSchema: ZodType<CreatePurchaseInvoice> =
 	z.object({
-		delivery_note: z.string({
-			description: "The Delivery Note number is required",
-		}),
-		supplier: z.string({ description: "A supplier is needed" }),
+		delivery_note: z.string(
+			
+		).describe("The Delivery Note number is required"),
+		supplier: z.string().describe("A supplier is needed"),
 		driver_name: z.string({
-			description: "Delivery Driver required",
-			required_error: "Delivery Driver is required",
-		}),
+			error: "Delivery Driver is required",
+		}).describe("Delivery Driver required"),
 		reg_no: z.string({
-			required_error: "Vehicle registration Number is required",
+			error: "Vehicle registration Number is required",
 		}),
 		delivery_date: z.date(),
 		items: z

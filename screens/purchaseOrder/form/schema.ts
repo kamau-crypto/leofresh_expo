@@ -28,12 +28,13 @@ export interface PurchaseOrderItem
 }
 
 export const createPurchaseOrder: ZodType<AddPurchaseOrder> = z.object({
-	supplier: z.string({
-		description: "A supplier is needed to make an order",
-		required_error: "A supplier needs to be chosen",
-	}),
+	supplier: z
+		.string({
+			error: "A supplier needs to be chosen",
+		})
+		.describe("A supplier is needed to make an order"),
 	transaction_date: z.date(),
-	schedule_date: z.date({ required_error: "A date of delivery is needed" }),
+	schedule_date: z.date({ error: "A date of delivery is needed" }),
 	cost_center: z.string(),
 	buying_price_list: z.string(),
 	items: z

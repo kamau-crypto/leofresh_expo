@@ -17,21 +17,21 @@ export const create_journal_entry: ZodType<CreateJournalEntryRecord> = z.object(
 				cost_center: z.string().optional(),
 				project: z.string().optional(),
 				debit_in_account_currency: z.coerce
-					.number({ required_error: "Invalid value found" })
+					.number({ error: "Invalid value found" })
 					.min(0)
 					.optional(),
 				credit_in_account_currency: z.coerce
-					.number({ required_error: "Invalid value found" })
+					.number({ error: "Invalid value found" })
 					.min(0)
 					.optional(),
 			})
 		),
 		user_remark: z.string(),
 		multi_currency: z.number(),
-		receipt_no: z.string({ required_error: "Add the receipt number here" }),
+		receipt_no: z.string({ error: "Add the receipt number here" }),
 		amount: z.coerce
 			.number({
-				required_error: "The amount is required to proceed",
+				error: "The amount is required to proceed",
 			})
 			.min(1),
 	}
