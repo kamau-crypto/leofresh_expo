@@ -32,9 +32,9 @@ export class Supplier extends FrappeInstance {
 				await this.supplierInstance.get(this.docType, {
 					params: {
 						fields: JSON.stringify(Object.values(SupplierEnum)),
-						filters: JSON.stringify([
-							["supplier_group", "=", "HillFresh Supplier"],
-						]), // Only show the suppliers who are in a company
+						// filters: JSON.stringify([
+						// 	["supplier_group", "=", "Leofresh Supplier"],
+						// ]), // Only show the suppliers who are in a company
 						limit_page_length: limit,
 					},
 				});
