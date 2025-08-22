@@ -28,7 +28,7 @@ export default function Login() {
 					Login to Leofresh
 				</Text>
 			</View>
-			<ScrollView contentContainerStyle={styles.container}>
+			<ScrollView contentContainerStyle={{...styles.container, backgroundColor: theme.colors.background}}>
 				<LoginPage />
 			</ScrollView>
 		</HillFreshKeyBoardView>
