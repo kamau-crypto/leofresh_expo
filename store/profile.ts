@@ -1,16 +1,29 @@
 import { ReadPOSProfile } from "@/constants";
-import { MMKVStorage } from "@/utils/storage";
+import * as SecureStore from "expo-secure-store";
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 type ProfileStore = {
 	profile: ReadPOSProfile | undefined;
 	updateProfile: (p: ReadPOSProfile) => void;
 };
 
+const secureStorage = {
+	getItem: async (name: string): Promise<string | null> => {
+		return SecureStore.getItem(name);
+	},
+	setItem: async (name: string, value: string): Promise<void> => {
+		return SecureStore.setItem(name, value);
+	},
+	removeItem: async (name: string): Promise<void> => {
+		await SecureStore.deleteItemAsync(name);
+		await SecureStore.deleteItemAsync("hillFreshUser");
+	},
+};
+
 export const useProfileStore = create<ProfileStore>()(
 	persist(
-		(set, _get) => ({
+		(set, get) => ({
 			profile: undefined,
 			updateProfile: prof =>
 				set(() => ({
@@ -19,32 +32,7 @@ export const useProfileStore = create<ProfileStore>()(
 		}),
 		{
 			name: "profile",
-			storage: {
-				getItem: (
-					name: string
-				): import("zustand/middleware").StorageValue<ProfileStore> | null => {
-					const value = MMKVStorage.getItem(name);
-					if (!value) return null;
-					if (typeof value === "string") {
-						return JSON.parse(
-							value
-						) as import("zustand/middleware").StorageValue<ProfileStore>;
-					}
-					console.log(
-						"MMKVStorage.getItem returned a Promise, which is unexpected for sync storage."
-					);
-					return null;
-				},
-				setItem: (
-					name: string,
-					value: import("zustand/middleware").StorageValue<ProfileStore>
-				): void => {
-					MMKVStorage.setItem(name, JSON.stringify(value));
-				},
-				removeItem: (name: string): void => {
-					MMKVStorage.removeItem(name);
-				},
-			},
+			storage: createJSONStorage(() => secureStorage), // [ ] TODO Use Secure storage to store tokens but for complex stores, use React Native Async Storage.
 		}
 	)
 );
