@@ -9,6 +9,7 @@ import { StockLevels } from "@/screens/home/StockLevels";
 import { useUserStore } from "@/store/user";
 import { useHeaderHeight } from "@react-navigation/elements";
 import { useFocusEffect, useRouter } from "expo-router";
+import { useRef } from "react";
 
 export default function HomeScreen() {
 	const top = useHeaderHeight();
@@ -16,15 +17,20 @@ export default function HomeScreen() {
 	const { user } = useUserStore();
 
 	const router = useRouter();
+	const hasNavigated= useRef(false);
 
 	useFocusEffect(() => {
+		//Only run the navigation logic if the profile is loaded and the user exists
+		if (!user || profile === undefined || hasNavigated.current) return;
 		//
 		//If we have a user, but not profile, redirect to settings.
 		//If we have a user profile, and their user.type is of type agent, redirect to the Agent page.Rewire this logic to ensure that we have more than one app ready for usage.
 		if (user && user.type !== "Agent" && !profile?.customer) {
+			hasNavigated.current=true
 			router.push("/(protected)/settings");
 		} else {
 			if (user!.type === "Agent") {
+				hasNavigated.current=true
 				return router.replace("/(protected)/agent");
 			}
 		}
