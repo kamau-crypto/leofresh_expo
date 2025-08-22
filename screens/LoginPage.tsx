@@ -4,7 +4,6 @@ import {
 	useSession,
 } from "@/components";
 import { appColors, Login, LoginSchema } from "@/constants";
-import { useKeyStore } from "@/store/token";
 import { appConfig } from "@/utils/config";
 import { hideKeyboard } from "@/utils/keyboard";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -25,7 +24,6 @@ export function LoginPage() {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const { signIn, session } = useSession();
 	const { theme } = useHillFreshTheme();
-	const { key } = useKeyStore();
 
 	const version = Constants.expoConfig?.version;
 	const {
@@ -132,6 +130,7 @@ const styles = StyleSheet.create({
 		flexDirection: "column",
 		alignContent: "center",
 		padding: "10%",
+		paddingBottom: "20%",
 		rowGap: "4%",
 	},
 	image: {
